@@ -1,0 +1,5 @@
+# GCP dev: backend URLs and secrets are injected by
+# novabank-platform/gcp/environments/dev/api-gateway.yaml
+logging:
+  level:
+    com.novabank: DEBUG

@@ -1,0 +1,10 @@
+# GCP preprod: production-like logging and health details hidden.
+management:
+  endpoint:
+    health:
+      show-details: never
+
+logging:
+  level:
+    root: INFO
+    com.novabank: INFO
