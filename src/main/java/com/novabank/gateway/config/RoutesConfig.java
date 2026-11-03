@@ -20,7 +20,8 @@ public class RoutesConfig {
                         .uri(s.authUrl()))
                 .route("account-service", r -> r.path("/api/accounts/**", "/api/admin/accounts/**")
                         .uri(s.accountUrl()))
-                .route("transaction-service", r -> r.path("/api/transactions/**", "/api/admin/transactions/**")
+                .route("transaction-service", r -> r.path("/api/transactions/**", "/api/admin/transactions/**",
+                                "/api/beneficiaries", "/api/beneficiaries/**")
                         .uri(s.transactionUrl()))
                 .build();
     }
