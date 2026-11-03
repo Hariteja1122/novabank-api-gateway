@@ -46,11 +46,10 @@ class GatewaySecurityTest {
 
     @Test
     void auditLogIsAdminOnly() throws Exception {
-        for (String log : new String[]{"auth", "accounts", "transactions"}) {
-            web.get().uri("/api/admin/audit/" + log).exchange().expectStatus().isUnauthorized();
-            web.get().uri("/api/admin/audit/" + log).header("Authorization", "Bearer " + token("CUSTOMER"))
-                    .exchange().expectStatus().isForbidden();
-        }
+        // Admin requests are routed to auth-service (a dummy URL here), so only the rejections are checked.
+        web.get().uri("/api/admin/audit").exchange().expectStatus().isUnauthorized();
+        web.get().uri("/api/admin/audit?action=LOGIN").header("Authorization", "Bearer " + token("CUSTOMER"))
+                .exchange().expectStatus().isForbidden();
     }
 
     private static String token(String role) throws Exception {
